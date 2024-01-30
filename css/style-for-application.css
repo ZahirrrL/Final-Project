@@ -1,0 +1,61 @@
+.hidden {
+    display: none;
+}
+
+.form-container-for-application {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn-for-application {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.button-for-application {
+    background-color: #FFA400;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button-for-application:hover {
+    background-color: #FFA400;
+}
+
+.form-for-application {
+    margin-top: 20px;
+}
+
+.label-for-application {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.input-for-application {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #FFA400;
+}
+
+#thanksMessage {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #FFA400;
+    background-color: #e7f3e3;
+}
