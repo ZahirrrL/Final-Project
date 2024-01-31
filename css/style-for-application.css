@@ -8,10 +8,25 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
     padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    background: #EDE8E2;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    text-align: center;
+    border: 2px solid #FFA400;
+}
+
+@media (max-width:600px) {
+    .form-container-for-application {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .input-for-application {
+        width: calc(100% - 24px);
+    }
 }
 
 .close-btn-for-application {
@@ -23,16 +38,17 @@
 
 .button-for-application {
     background-color: #FFA400;
-    color: white;
-    padding: 10px 20px;
+    color: #fff;
+    padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 24px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .button-for-application:hover {
-    background-color: #FFA400;
+    background-color: #ffcc00;
 }
 
 .form-for-application {
@@ -46,16 +62,45 @@
 
 .input-for-application {
     width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
     box-sizing: border-box;
-    border: 1px solid #FFA400;
+    border: 2px solid #ffd700;
+    border-radius: 26px;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
+.input-for-application:focus {
+    outline: none;
+    border-color: #ffcc00;
+    box-shadow: 0 0 12px rgba(255, 204, 0, 0.5);
+    transform: scale(1.02);
+}
 #thanksMessage {
     display: none;
-    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     padding: 10px;
     border: 1px solid #FFA400;
-    background-color: #e7f3e3;
+    border-radius:  26px;
+    background-color: #EDE8E2;
+    box-sizing: border-box;
+    text-align: center;
+}
+.p-for-application {
+    color: #424242;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+}
+.massanger-icon-thanks {
+    margin-top: 100px;
+
 }

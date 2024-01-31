@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Закомментируйте следующую строку, чтобы форма не открывалась автоматически при загрузке страницы
-    // openApartmentForm();
+
 });
 
 function openApartmentForm() {
@@ -9,11 +8,11 @@ function openApartmentForm() {
 
 function closeApartmentForm() {
     document.getElementById('apartmentFormContainer').style.display = 'none';
-    resetForm(); // Сбросить форму при закрытии
+    resetForm();
 }
 
 function submitApartmentForm() {
-    openApartmentForm(); // Открыть форму при отправке заявки
+    openApartmentForm();
     var surname = document.getElementById('surname').value;
     var email = document.getElementById('email').value;
     var floor = document.getElementById('floor').value;
@@ -25,15 +24,15 @@ function submitApartmentForm() {
     }
 
     document.getElementById('thanksMessage').style.display = 'block';
-    document.getElementById('thankYouName').innerText = surname; // Фамилия
-    document.getElementById('thankYouPhone').innerText = email; // Почта
+    document.getElementById('thankYouName').innerText = surname;
+    document.getElementById('thankYouPhone').innerText = email;
     document.getElementById('selectedFloor').innerText = floor;
     document.getElementById('selectedRooms').innerText = rooms;
 
     setTimeout(function () {
         document.getElementById('thanksMessage').style.display = 'none';
         resetForm();
-    }, 10000);
+    }, 6000);
 }
 
 function closeThanksMessage() {
