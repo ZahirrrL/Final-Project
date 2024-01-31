@@ -276,6 +276,42 @@ body {
     padding-top: 28px;
 }
 
+.input-for-application-add:focus {
+    outline: none;
+    border-color: #ffcc00;
+    box-shadow: 0 0 12px rgba(255, 204, 0, 0.5);
+    transform: scale(1.02);
+}
+
+.hover-focus:hover {
+    transform: scale(1.2);
+
+}
+.thankYouMessage {
+    display: none;
+    background-color: #FFD700; 
+    color: #FFFFFF;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    animation: fadeInOut 5s ease-in-out; 
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+.form-check-input:checked {
+
+    background-color: #FFA400;
+    border-color: #FFA400;
+    transform: scale(1.02);
+}
+
 .billing-lower-item {
     color: var(--Text-Dark-Body, rgba(255, 255, 255, 0.80));
     font-size: 18px;
@@ -394,6 +430,7 @@ footer {
 .massanger-style {
     width: 25px;
     height: 34px;
+
 }
 
 .footer-link-section {

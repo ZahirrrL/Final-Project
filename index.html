@@ -52,6 +52,37 @@
                             <button class="btn btn-primary button-item  " type="button" id="openFormButton"
                                 onclick="showForm()">Заказать звонок</button>
                         </li>
+                        <div class="overlay" id="overlay" style="display: none;"></div>
+
+                        <div class="cass  my-button" id="formContainer" style="display: none;">
+                            <form id="callForm">
+                                <div id="closeButton" style="text-align: right;" onclick="hideForm()">&#10006;</div>
+                                <h2 class="h2-for-call">Закажите консультацию</h2>
+                                <p class="lower-call">Мы перезвоним Вам в течении 15 минут</p>
+                                <div class="input-container">
+                                    <input type="text" placeholder="Ваше имя" id="name" name="name" class="input-class"
+                                        required>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="tel" id="phone" class="input-class" name="phone" pattern="[0-9]{10}"
+                                        placeholder="Ваш телефон " required>
+                                </div>
+
+                                <button type="button" onclick="submitForm()">Заказать звонок</button>
+                            </form>
+                            <div id="thankYouMessage" class="hidden">
+                                <div class="thank-you-content">
+                                    <h2 class="h2-for-call">Спасибо, <span id="userName" class="text-primary"></span>!
+                                        Ваш заказ принят.
+                                    </h2>
+                                    <p class="lower-call">Мы свяжемся с вами в ближайшее время.</p>
+                                    <p class="lower-call"><a href="#" class="return-link"
+                                            onclick="returnToSite()">Вернуться на сайт</a></p>
+                                </div>
+                            </div>
+                        </div>
+
                     </ul>
                 </div>
             </div>
@@ -73,7 +104,7 @@
                     <div class="col-lg-6 col-md-5 ">
                         <div class="input-item ">
                             <p>Ищите квартиру? <br> Оставьте заявку на подбор квартиры прямо сейчас и мы поможем!</p>
-                            <button class="btn btn-primary container-fluid button-item button-for-application text-dark"
+                            <button class="btn btn-primary container-fluid button-item  text-dark"
                                 onclick="openApartmentForm()">Оставить заявку</button>
                             <p class="lower-button m-auto ">от 15 дней пробный период</p>
                         </div>
@@ -160,30 +191,79 @@
                         сейчас - и мы свяжеся с вами в ближайшее время
                     </p>
                 </div>
-                <form class="d-flex justify-content-center gap-2 flex-wrap">
-                    <div class="">
-                        <input type="text" class="form-control" placeholder="Ваша имя" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                <form class="d-flex justify-content-center gap-2 flex-wrap "  id="applicationForm">
+                    <div>
+                        <input type="text" class="form-control input-for-application-add" placeholder="Ваше имя"
+                            id="fullName" aria-describedby="emailHelp" required>
                     </div>
                     <div>
-                        <input type="tel" class="form-control" placeholder="+7 (000) 000-0000" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                        <input type="tel" class="form-control input-for-application-add" placeholder="+7 (000) 000-0000"
+                            id="phoneNumber" aria-describedby="emailHelp" required>
                     </div>
                     <div>
-                        <input type="email" class="form-control" placeholder="E-mail" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                        <input type="email" class="form-control input-for-application-add" placeholder="E-mail"
+                            id="emailAddress" aria-describedby="emailHelp" required>
                     </div>
                     <div>
-                        <button class="btn btn-primary button-item mb-sm-3">Оставить заявку</button>
+                        <button type="button" class="btn btn-primary button-item mb-sm-3"
+                            onclick="submitApplication()">Оставить заявку</button>
+                    </div>
+                    <div class="form-container-for-application" id="apartmentFormContainer">
+                        <div class="close-btn-for-application" onclick="closeApartmentForm()">X</div>
+                        <h2 class="h2-for-call">Заявка на поиск квартиры</h2>
+                        <form class="form-for-application " id="apartmentForm">
+                            <label class="label-for-application " for="surname">Имя</label>
+                            <input class="input-for-application" type="text" id="surname" name="surname" required>
+                            <label class="label-for-application" for="email">Почта:</label>
+                            <input class="input-for-application" type="email" id="email" name="email" required>
+                            <label class="label-for-application" for="floor">Этаж:</label>
+                            <input class="input-for-application" type="text" id="floor" name="floor" required>
+                            <label class="label-for-application" for="rooms">Количество комнат:</label>
+                            <input class="input-for-application" type="text" id="rooms" name="rooms" required>
+                            <button class="button-for-application" type="button"
+                                onclick="submitApartmentForm()">Отправить
+                                заявку</button>
+                        </form>
+                        <div id="thanksMessage" class="hidden my-application">
+                            <p class="p-for-application">Благодарим за заявку, <span id="thankYouName"
+                                    class="text-primary"></span>!</p>
+                            <p class="p-for-application">Мы свяжемся с вами по почте <span id="thankYouPhone"
+                                    class="text-primary"></span></p>
+                            <p class="p-for-application">Информация о квартире: Этаж <span id="selectedFloor"
+                                    class="text-primary">,</span> Количество комнат <span id="selectedRooms">.</span>
+                            </p>
+                            <button class="button-for-application container-fluid mt-5"
+                                onclick="closeThanksMessage()">Закрыть</button>
+                            <div class="d-flex gap-3 flex-wrap justify-content-center massanger-icon-thanks">
+                                <div class="button-style">
+                                    <button class="btn btn-primary  rounded-circle"><a href="https://www.facebook.com/">
+                                            <img src=" ./massanger-icon/Facebook.svg " class="massanger-style"
+                                                alt=""></a></button>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary rounded-pill"><a href="https://www.instagram.com/">
+                                            <img src="./massanger-icon/Instagram.svg" class="massanger-style"
+                                                alt=""></a></button>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary rounded-pill"><a href="https://www.twitter.com/">
+                                            <img src="./massanger-icon/Twitter.svg" class="massanger-style "
+                                                alt=""></a></button>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary rounded-pill"><a href="https://www.vk.ru/"> <img
+                                                src="./massanger-icon/VK.svg " class="massanger-style"
+                                                alt=""></a></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
-                <div class="text-center">
-                    <p class="lower-button pt-0">
-                        Оставляя заявку, вы соглашаетесь на <a href="#" class="link-primary text-decoration-none">
-                            обработку персональных данных</a> и с <a href="#"
-                            class="text-decoration-none link-primary">условиями бронирования счёта </a>
-                    </p>
-                </div>
+
+                <div id="thankYouMessagee" class="hidden descriptionBlock">Спасибо, <span id="submittedFullName" class="text-primary"></span>! Мы получили
+                    вашу заявку с
+                    номером <span id="submittedPhoneNumber"></span> и адресом электронной почты <span
+                        id="submittedEmailAddress"></span>. <span  class="d-block">Мы свяжеся с вами в ближайшее время</span></div>
             </div>
         </section>
         <section class="fourth-section">
@@ -300,7 +380,11 @@
                                 </div>
                                 <div class="text-center mt-3">
                                     <p class=" card-item ">Имя Фамилия</p>
-                                    <p class="main-lower-find-item">Описание</p>
+                                    <p class="main-lower-find-item hover-item" onclick="toggleDescription('descriptionBlock2')">Описание</p>
+                                    <div class="descriptionBlock" id="descriptionBlock2">
+                                        <p class="descriptionText">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -311,7 +395,10 @@
                                 </div>
                                 <div class="text-center mt-3">
                                     <p class=" card-item">Имя Фамилия</p>
-                                    <p class="main-lower-find-item">Описание</p>
+                                    <p class="main-lower-find-item hover-item" onclick="toggleDescription('descriptionBlock3')">Описание</p>
+                                    <div class="descriptionBlock" id="descriptionBlock3">
+                                        <p class="descriptionText">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -322,7 +409,10 @@
                                 </div>
                                 <div class="text-center mt-3">
                                     <p class="card-item">Имя Фамилия</p>
-                                    <p class="main-lower-find-item">Описание</p>
+                                    <p class="main-lower-find-item hover-item " onclick="toggleDescription('descriptionBlock4')">Описание</p>
+                                    <div class="descriptionBlock" id="descriptionBlock4">
+                                        <p class="descriptionText">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -333,7 +423,10 @@
                                 </div>
                                 <div class="text-center mt-3">
                                     <p class="card-item  ">Имя Фамилия</p>
-                                    <p class="main-lower-find-item">Описание</p>
+                                    <p class="main-lower-find-item hover-item" onclick="toggleDescription('descriptionBlock1')">Описание</p>
+                                    <div class="descriptionBlock" id="descriptionBlock1">
+                                        <p class="descriptionText">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -368,50 +461,55 @@
                     <div class="seven-section-lower-item">
                         <p>Оставьте заявку, если вы хотите продавть квартиру. Мы свяжемся с вами и произведём оценку</p>
                     </div>
-                    <form class="input-style ">
-                        <div class=" mb-3">
-                            <input type="text" class=" form-control " placeholder="Ваша имя" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
+                    <form class="input-style" id="customApplicationForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control input-for-application-add" placeholder="Ваше имя"
+                                id="customName" aria-describedby="emailHelp" required>
                         </div>
                         <div class="mb-3">
-                            <input type="tel" class="form-control" placeholder="+7 (000) 000-0000"
-                                id="exampleInputPassword1">
+                            <input type="tel" class="form-control input-for-application-add"
+                                placeholder="+7 (000) 000-0000" id="customPhone" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="E-mail" id="exampleInputPassword1">
+                            <input type="email" class="form-control input-for-application-add" placeholder="E-mail"
+                                id="customEmail" required>
                         </div>
-                        <p class="kv " style="text-align: left;">Выберите способ доставки</p>
+
+                        <p class="kv" style="text-align: left;">Выберите способ доставки</p>
+
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label kv ps-2" for="flexRadioDefault1">
-                                До квартиры
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input " type="radio" name="flexRadioDefault"
-                                id="flexRadioDefault1">
-                            <label class="form-check-label kv ps-2" for="flexRadioDefault1">
-                                До подьезда
-                            </label>
+                            <input class="form-check-input" type="radio" name="customDeliveryMethod"
+                                id="customToApartment" required>
+                            <label class="form-check-label kv ps-2" for="customToApartment">До квартиры</label>
                         </div>
                         <div class="form-check">
-                            <input class="input-style-checked form-check-input" type="radio" name="flexRadioDefault"
-                                id="flexRadioDefault1">
-                            <label class="kv form-check-label ps-2" for="flexRadioDefault1">
-                                Самовывоз
-                            </label>
+                            <input class="form-check-input" type="radio" name="customDeliveryMethod"
+                                id="customToEntrance" required>
+                            <label class="form-check-label kv ps-2" for="customToEntrance">До подъезда</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="input-style-checked form-check-input" type="radio" name="customDeliveryMethod"
+                                id="customSelfPickup" required>
+                            <label class="kv form-check-label ps-2" for="customSelfPickup">Самовывоз</label>
                         </div>
 
                         <div>
-                            <button class="btn btn-primary container-fluid mt-5">Оставить заявку</button>
+                            <button class="btn btn-primary container-fluid mt-5"
+                                onclick="submitCustomApplication()">Оставить заявку</button>
                         </div>
                         <div class="mt-3">
                             <p class="lower-button">
-                                Оставляя заявку, вы соглашаетесь на <a href="#" class="text-white text-decoration-none">
-                                    обработку персональных данныхи с условиями бронирования счёта </a>
+                                Оставляя заявку, вы соглашаетесь на <a href="#"
+                                    class="text-white text-decoration-none">обработку персональных данных и с условиями
+                                    бронирования счёта</a>
                             </p>
                         </div>
                     </form>
+
+                    <div class="thankYouMessage" id="customThankYouMessage">
+                        <p class="thankYouText">Спасибо, Мы получили вашы данные <span id="customSubmittedName"></span>!
+                            Мы свяжемся с вами и произведём оценку</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -422,17 +520,19 @@
                     <p>Наши партнёры</p>
                 </div>
                 <div class="d-flex gap-4 flex-wrap justify-content-center">
-                    <div class="">
-                        <img src="./logo/Rectangle 58.png" alt="">
+                    <div class="hover-focus">
+                        <a href="#"> <img src="./logo/Rectangle 58.png" alt=""></a>
                     </div>
-                    <div class="">
-                        <img src="./logo/Rectangle 59.png" alt="">
+                    <div class="hover-focus">
+                        <a href="#"> <img src="./logo/Rectangle 59.png" alt="">
+                        </a>
                     </div>
-                    <div class="">
-                        <img src="./logo/Rectangle 60.png" alt="">
+                    <div class="hover-focus">
+                        <a href="#"> <img src="./logo/Rectangle 60.png" alt=""> </a>
                     </div>
-                    <div class="">
-                        <img src="./logo/Rectangle 61.png" alt="">
+                    <div class="hover-focus">
+                        <a href="#"> <img src="./logo/Rectangle 61.png" alt="">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -531,76 +631,8 @@
             </div>
         </div>
     </footer>
-    <div class="overlay" id="overlay" style="display: none;"></div>
 
-    <div class="cass  my-button" id="formContainer" style="display: none;">
-        <form id="callForm">
 
-            <h2 class="h2-for-call">Закажите консультацию</h2>
-            <p class="lower-call">Мы перезвоним Вам в течении 15 минут</p>
-            <div class="input-container">
-                <input type="text" placeholder="Ваше имя" id="name" name="name" class="input-class" required>
-            </div>
-
-            <div class="input-container">
-                <input type="tel" id="phone" class="input-class" name="phone" pattern="[0-9]{10}"
-                    placeholder="Ваш телефон " required>
-            </div>
-
-            <button type="button" onclick="submitForm()">Заказать звонок</button>
-        </form>
-        <div id="thankYouMessage" class="hidden">
-            <div class="thank-you-content">
-                <h2 class="h2-for-call">Спасибо, <span id="userName" class="text-primary"></span>! Ваш заказ принят.
-                </h2>
-                <p class="lower-call">Мы свяжемся с вами в ближайшее время.</p>
-                <p class="lower-call"><a href="#" class="return-link" onclick="returnToSite()">Вернуться на сайт</a></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-container-for-application" id="apartmentFormContainer">
-        <div class="close-btn-for-application" onclick="closeApartmentForm()">X</div>
-        <h2 class="h2-for-call">Заявка на поиск квартиры</h2>
-        <form class="form-for-application" id="apartmentForm">
-            <label class="label-for-application " for="surname">Имя</label>
-            <input class="input-for-application" type="text" id="surname" name="surname" required>
-            <label class="label-for-application" for="email">Почта:</label>
-            <input class="input-for-application" type="email" id="email" name="email" required>
-            <label class="label-for-application" for="floor">Этаж:</label>
-            <input class="input-for-application" type="text" id="floor" name="floor" required>
-            <label class="label-for-application" for="rooms">Количество комнат:</label>
-            <input class="input-for-application" type="text" id="rooms" name="rooms" required>
-            <button class="button-for-application" type="button" onclick="submitApartmentForm()">Отправить
-                заявку</button>
-        </form>
-        <div id="thanksMessage" class="hidden">
-            <p class="p-for-application">Благодарим за заявку, <span id="thankYouName" class="text-primary"></span>!</p>
-            <p class="p-for-application">Мы свяжемся с вами по почте <span id="thankYouPhone"
-                    class="text-primary"></span></p>
-            <p class="p-for-application">Информация о квартире: Этаж <span id="selectedFloor"
-                    class="text-primary">,</span> Количество комнат <span id="selectedRooms">.</span></p>
-            <button class="button-for-application container-fluid mt-5" onclick="closeThanksMessage()">Закрыть</button>
-            <div class="d-flex gap-3 flex-wrap justify-content-center massanger-icon-thanks">
-                <div class="button-style">
-                    <button class="btn btn-primary  rounded-circle"><a href="https://www.facebook.com/"> <img
-                                src=" ./massanger-icon/Facebook.svg " class="massanger-style" alt=""></a></button>
-                </div>
-                <div>
-                    <button class="btn btn-primary rounded-pill"><a href="https://www.instagram.com/"> <img
-                                src="./massanger-icon/Instagram.svg" class="massanger-style" alt=""></a></button>
-                </div>
-                <div>
-                    <button class="btn btn-primary rounded-pill"><a href="https://www.twitter.com/"> <img
-                                src="./massanger-icon/Twitter.svg" class="massanger-style" alt=""></a></button>
-                </div>
-                <div>
-                    <button class="btn btn-primary rounded-pill"><a href="https://www.vk.ru/"> <img
-                                src="./massanger-icon/VK.svg " class="massanger-style" alt=""></a></button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
