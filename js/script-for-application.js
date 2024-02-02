@@ -37,7 +37,7 @@ function submitApartmentForm() {
 
 function closeThanksMessage() {
     document.getElementById('thanksMessage').style.display = 'none';
-    closeApartmentForm(); // Закрыть форму после закрытия благодарности
+    closeApartmentForm(); 
 }
 
 function resetForm() {

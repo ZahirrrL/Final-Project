@@ -107,6 +107,56 @@
                             <button class="btn btn-primary container-fluid button-item  text-dark"
                                 onclick="openApartmentForm()">Оставить заявку</button>
                             <p class="lower-button m-auto ">от 15 дней пробный период</p>
+                            <div class="form-container-for-application" id="apartmentFormContainer">
+                                <div class="close-btn-for-application" onclick="closeApartmentForm()">X</div>
+                                <h2 class="h2-for-call">Заявка на поиск квартиры</h2>
+                                <form class="form-for-application " id="apartmentForm">
+                                    <label class="label-for-application " for="surname">Имя</label>
+                                    <input class="input-for-application" type="text" id="surname" name="surname" required>
+                                    <label class="label-for-application" for="email">Почта:</label>
+                                    <input class="input-for-application" type="email" id="email" name="email" required>
+                                    <label class="label-for-application" for="floor">Этаж:</label>
+                                    <input class="input-for-application" type="text" id="floor" name="floor" required>
+                                    <label class="label-for-application" for="rooms">Количество комнат:</label>
+                                    <input class="input-for-application" type="text" id="rooms" name="rooms" required>
+                                    <button class="button-for-application" type="button"
+                                        onclick="submitApartmentForm()">Отправить
+                                        заявку</button>
+                                </form>
+                                <div id="thanksMessage" class="hidden my-application">
+                                    <p class="p-for-application">Благодарим за заявку, <span id="thankYouName"
+                                            class="text-primary"></span>!</p>
+                                    <p class="p-for-application">Мы свяжемся с вами по почте <span id="thankYouPhone"
+                                            class="text-primary"></span></p>
+                                    <p class="p-for-application">Информация о квартире: Этаж <span id="selectedFloor"
+                                            class="text-primary">,</span> Количество комнат <span id="selectedRooms">.</span>
+                                    </p>
+                                    <button class="button-for-application container-fluid mt-5"
+                                        onclick="closeThanksMessage()">Закрыть</button>
+                                    <div class="d-flex gap-3 flex-wrap justify-content-center massanger-icon-thanks">
+                                        <div class="button-style">
+                                            <button class="btn btn-primary  rounded-circle"><a href="https://www.facebook.com/">
+                                                    <img src=" ./massanger-icon/Facebook.svg " class="massanger-style"
+                                                        alt=""></a></button>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-primary rounded-pill"><a href="https://www.instagram.com/">
+                                                    <img src="./massanger-icon/Instagram.svg" class="massanger-style"
+                                                        alt=""></a></button>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-primary rounded-pill"><a href="https://www.twitter.com/">
+                                                    <img src="./massanger-icon/Twitter.svg" class="massanger-style "
+                                                        alt=""></a></button>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-primary rounded-pill"><a href="https://www.vk.ru/"> <img
+                                                        src="./massanger-icon/VK.svg " class="massanger-style"
+                                                        alt=""></a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -191,73 +241,23 @@
                         сейчас - и мы свяжеся с вами в ближайшее время
                     </p>
                 </div>
-                <form class="d-flex justify-content-center gap-2 flex-wrap "  id="applicationForm">
-                    <div>
+                <form class="d-flex justify-content-center gap-2 me-5 flex-wrap "  id="applicationForm">
+                    <div >
                         <input type="text" class="form-control input-for-application-add" placeholder="Ваше имя"
                             id="fullName" aria-describedby="emailHelp" required>
                     </div>
-                    <div>
+                    <div >
                         <input type="tel" class="form-control input-for-application-add" placeholder="+7 (000) 000-0000"
                             id="phoneNumber" aria-describedby="emailHelp" required>
                     </div>
-                    <div>
+                    <div >
                         <input type="email" class="form-control input-for-application-add" placeholder="E-mail"
                             id="emailAddress" aria-describedby="emailHelp" required>
                     </div>
-                    <div>
-                        <button type="button" class="btn btn-primary button-item mb-sm-3"
+                    <div class="">
+                        <button type="button" class="btn btn-primary button-item mb-sm-3 "
                             onclick="submitApplication()">Оставить заявку</button>
-                    </div>
-                    <div class="form-container-for-application" id="apartmentFormContainer">
-                        <div class="close-btn-for-application" onclick="closeApartmentForm()">X</div>
-                        <h2 class="h2-for-call">Заявка на поиск квартиры</h2>
-                        <form class="form-for-application " id="apartmentForm">
-                            <label class="label-for-application " for="surname">Имя</label>
-                            <input class="input-for-application" type="text" id="surname" name="surname" required>
-                            <label class="label-for-application" for="email">Почта:</label>
-                            <input class="input-for-application" type="email" id="email" name="email" required>
-                            <label class="label-for-application" for="floor">Этаж:</label>
-                            <input class="input-for-application" type="text" id="floor" name="floor" required>
-                            <label class="label-for-application" for="rooms">Количество комнат:</label>
-                            <input class="input-for-application" type="text" id="rooms" name="rooms" required>
-                            <button class="button-for-application" type="button"
-                                onclick="submitApartmentForm()">Отправить
-                                заявку</button>
-                        </form>
-                        <div id="thanksMessage" class="hidden my-application">
-                            <p class="p-for-application">Благодарим за заявку, <span id="thankYouName"
-                                    class="text-primary"></span>!</p>
-                            <p class="p-for-application">Мы свяжемся с вами по почте <span id="thankYouPhone"
-                                    class="text-primary"></span></p>
-                            <p class="p-for-application">Информация о квартире: Этаж <span id="selectedFloor"
-                                    class="text-primary">,</span> Количество комнат <span id="selectedRooms">.</span>
-                            </p>
-                            <button class="button-for-application container-fluid mt-5"
-                                onclick="closeThanksMessage()">Закрыть</button>
-                            <div class="d-flex gap-3 flex-wrap justify-content-center massanger-icon-thanks">
-                                <div class="button-style">
-                                    <button class="btn btn-primary  rounded-circle"><a href="https://www.facebook.com/">
-                                            <img src=" ./massanger-icon/Facebook.svg " class="massanger-style"
-                                                alt=""></a></button>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary rounded-pill"><a href="https://www.instagram.com/">
-                                            <img src="./massanger-icon/Instagram.svg" class="massanger-style"
-                                                alt=""></a></button>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary rounded-pill"><a href="https://www.twitter.com/">
-                                            <img src="./massanger-icon/Twitter.svg" class="massanger-style "
-                                                alt=""></a></button>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary rounded-pill"><a href="https://www.vk.ru/"> <img
-                                                src="./massanger-icon/VK.svg " class="massanger-style"
-                                                alt=""></a></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div>   
                 </form>
 
                 <div id="thankYouMessagee" class="hidden descriptionBlock">Спасибо, <span id="submittedFullName" class="text-primary"></span>! Мы получили
@@ -581,8 +581,8 @@
             </div> -->
         </section>
         <section class="ninth-section">
-            <div class="d-flex justify-content-end flex-wrap">
-                <div class="d-flex flex-column justify-content-center mx-auto">
+            <div class="d-flex flex-wrap  ">
+                <div class="    black-block      d-flex flex-column justify-content-center align-items-center">
                     <div class="contacts">
                         <p>Контакты</p>
                     </div>
@@ -594,8 +594,8 @@
                         <p>Москва, метро “Китай город”,ул. Яузская, дом 15/11</p>
                     </div>
                 </div>
-                <div class="card-link">
-                    <img src="./img/карта.png" width="600px" alt="">
+                <div class="  cart-style">
+                    <img src="./img/карта.png" class="img-cart" alt="">
                 </div>
             </div>
         </section>
@@ -620,7 +620,7 @@
                                 src="./massanger-icon/VK.svg " class="massanger-style" alt=""></a></button>
                 </div>
             </div>
-            <div class="d-flex gap-5 mt-5 flex-wrap ">
+            <div class="d-flex gap-3 mt-5 flex-wrap  ">
                 <a href="" class="footer-link-section hover-item">О компании</a>
                 <a href="" class="footer-link-section hover-item">Новости</a>
                 <a href="" class="footer-link-section hover-item">Помощь</a>

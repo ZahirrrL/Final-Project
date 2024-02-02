@@ -53,13 +53,6 @@ function returnToSite() {
     callForm.style.display = 'block';
 }
 
-
-
-
-
-
-
-
 function submitCustomApplication() {
     var customFormName = document.getElementById("customName").value;
     var customFormPhone = document.getElementById("customPhone").value;
@@ -91,11 +84,10 @@ function resetCustomForm() {
 function toggleDescription(descriptionBlockId) {
     var descriptionBlock = document.getElementById(descriptionBlockId);
 
-    // Инвертируем состояние блока с описанием при каждом клике
     if (descriptionBlock.style.display === 'block') {
-        descriptionBlock.style.display = 'none'; // если открыто, то закрываем
+        descriptionBlock.style.display = 'none'; 
     } else {
-        descriptionBlock.style.display = 'block'; // если закрыто, то открываем
+        descriptionBlock.style.display = 'block'; 
     }
 }
 
